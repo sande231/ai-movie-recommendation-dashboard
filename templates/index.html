@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Movie Search and Recommendation Dashboard</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <h1>🎬 AI Movie Recommendation Dashboard</h1>
+  <p class="subtitle">
+    A beginner AI web app that recommends movies by genre similarity
+  </p>
+
+  <!-- SEARCH PANEL -->
+  <div class="panel">
+    <form method="POST" class="form">
+      <label for="movie">Search a movie:</label>
+      <input
+        type="text"
+        name="movie"
+        id="movie"
+        placeholder="Type a movie name..."
+        required
+      >
+      <button type="submit">Search & Recommend</button>
+    </form>
+  </div>
+
+  <!-- ERROR MESSAGE -->
+  {% if error_message %}
+  <div class="panel">
+    <p class="muted">{{ error_message }}</p>
+  </div>
+  {% endif %}
+
+  <!-- DASHBOARD CARDS -->
+  <div class="cards">
+
+    <div class="card">
+      <div class="card-title">Total Movies</div>
+      <div class="card-value">{{ stats.total_movies }}</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Total Genres</div>
+      <div class="card-value">{{ stats.total_genres }}</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Selected Movie</div>
+      <div class="card-value">
+        {% if selected_movie %}
+          {{ selected_movie }}
+        {% else %}
+          —
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Selected Genre</div>
+      <div class="card-value">
+        {% if selected_genre %}
+          {{ selected_genre }}
+        {% else %}
+          —
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">IMDb Rating</div>
+      <div class="card-value">
+        {% if selected_rating %}
+          {{ selected_rating }} / 10
+        {% else %}
+          —
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SEARCHED MOVIE DETAILS -->
+  {% if searched_poster %}
+  <div class="panel">
+    <h2>Movie Details</h2>
+
+    <div class="movie-card" style="max-width:350px">
+      <img
+        src="{{ searched_poster }}"
+        class="poster"
+        onerror="this.src='https://via.placeholder.com/300x450?text=No+Poster';"
+      >
+
+      <div class="movie-info">
+        <h3>{{ selected_movie }}</h3>
+        <p><strong>Genre:</strong> {{ selected_genre }}</p>
+        <p><strong>IMDb Rating:</strong> {{ selected_rating }} / 10</p>
+        <p><strong>Year:</strong> {{ selected_year }}</p>
+        <p><strong>Director:</strong> {{ selected_director }}</p>
+        <p><strong>Plot:</strong> {{ selected_plot }}</p>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- MAIN GRID -->
+  <div class="grid">
+
+    <div class="panel">
+      <h2>Recommended Movies</h2>
+
+      <div class="movie-grid">
+        {% if recommendations %}
+          {% for rec in recommendations %}
+            <div class="movie-card">
+              <img
+                src="{{ rec.poster }}"
+                class="poster"
+                onerror="this.src='https://via.placeholder.com/300x450?text=No+Poster';"
+              >
+
+              <div class="movie-info">
+                <h3>{{ rec.movie }}</h3>
+                <p><strong>Genre:</strong> {{ rec.genre }}</p>
+                <p><strong>Match:</strong> {{ rec.score }}%</p>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p class="muted">Search a movie and click Search & Recommend.</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Top Action Movies</h2>
+      <ul>
+        {% for movie in top_action %}
+          <li>{{ movie }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h2>Genre Analytics</h2>
+      <img src="/static/genre_chart.png" alt="Genre Chart" class="chart">
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

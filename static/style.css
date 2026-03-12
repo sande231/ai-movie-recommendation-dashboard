@@ -1,0 +1,156 @@
+body{
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #eef2ff, #f8fafc);
+  margin: 0;
+  padding: 0;
+  color: #1f2937;
+}
+
+.container{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+h1{
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.subtitle{
+  text-align: center;
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+.cards{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.card{
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.card-title{
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.card-value{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.panel{
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  margin-bottom: 20px;
+}
+
+.form{
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+select{
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+}
+
+button{
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover{
+  background: #1d4ed8;
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.recommendation-list{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.movie-box{
+  background: #eff6ff;
+  border-left: 5px solid #2563eb;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.chart{
+  width: 100%;
+  border-radius: 8px;
+}
+
+.muted{
+  color: #6b7280;
+}
+
+.poster{
+  width:120px;
+  border-radius:8px;
+  margin-bottom:10px;
+}
+
+.movie-box{
+  text-align:center;
+}
+
+.movie-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap:16px;
+}
+
+.movie-card{
+  background:#ffffff;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+  transition:transform 0.2s ease;
+}
+
+.movie-card:hover{
+  transform:translateY(-4px);
+}
+
+.poster{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+}
+
+.movie-info{
+  padding:12px;
+}
+
+.movie-info h3{
+  margin:0 0 8px 0;
+}
